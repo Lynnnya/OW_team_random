@@ -19,10 +19,12 @@ class Player {
         return new Player(name, false);
     }
 
-    public void print_player() {
+    // hoist data input and outputs into parameters
+    // so you can easily change this function to print to a file, etc.
+    public void print_player(PrintStream out) {
         if (team)
-            System.out.println(String.format("%-10s", name));
+            out.println(String.format("%-10s", name));
         else
-            System.out.printf(String.format("%-10s", name));
+            out.printf(String.format("%-10s", name));
     }
 }
