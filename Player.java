@@ -22,9 +22,7 @@ class Player {
     // hoist data input and outputs into parameters
     // so you can easily change this function to print to a file, etc.
     public void print_player(PrintStream out) {
-        if (team)
-            out.println(String.format("%-10s", name));
-        else
-            out.printf(String.format("%-10s", name));
+        // it is best to avoid "magic" behaviors (writing a newline or not) in generic functions like this
+        out.print(String.format("%-10s", name));
     }
 }

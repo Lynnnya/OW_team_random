@@ -6,10 +6,6 @@ public class Main {
     static final int MIN_PLAYERS = 2;
     static final int OG_PLAYERS = 12;
 
-    static boolean RNG () {
-        Random rand = new Random();
-        return rand.nextBoolean();
-    }
     static int num_of_players_input(Scanner input, PrintStream prompt) {
         if (prompt != null)
             prompt.print("Enter the number of players that will be playing: ");

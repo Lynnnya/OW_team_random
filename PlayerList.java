@@ -10,7 +10,7 @@ public class PlayerList {
     List<Player> players;
 
     PlayerList() {
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
     }
 
     public void addPlayer(Player player) {
@@ -39,7 +39,7 @@ public class PlayerList {
 
     // when you write code that shares a block of data structure:
     // like this: static void list_organize(ArrayList<Player> list_of_players, int team_size)
-    // you should consider moving that code into the class that owns the data
+    // you should consider wrapping the data into a class and moving the function code into that class
     public void organizeByTeam() {
         for (int i = 0; i < players.size(); i++) {
             if (players.get(i).team) {
@@ -56,6 +56,7 @@ public class PlayerList {
         for (int i = 0; i < players.size() / 2; i++) {
             players.get(i).print_player(out);
             players.get(i + players.size() / 2).print_player(out);
+            out.println();
         }
     }
 }
