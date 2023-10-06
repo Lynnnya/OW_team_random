@@ -49,23 +49,25 @@ public class Main {
         String player_name;
 
         for (int i=0; i<num_of_players; i++){
-            System.out.print("Enter name for player " + (i+1) + ": ");
-            player_name = name_input.nextLine();
+            Player player = Player.scan(name_input, System.out, i+1);
             boolean new_member = RNG();
 
             if(T1_num == num_of_players/2){
-                list_of_players.add(new Player(player_name, true));
+                player.team = true;
+                list_of_players.add(player);
                 continue;
             }
             else if(T2_num == num_of_players/2){
-                list_of_players.add(new Player(player_name, false));
+                player.team = false;
+                list_of_players.add(player);
                 continue;
             }
             if(new_member)
                 T2_num++;
             else
                 T1_num++;
-            list_of_players.add(new Player(player_name, new_member));
+            player.team = new_member;
+            list_of_players.add(player);
         }
 
         list_organize(list_of_players, num_of_players/2);
