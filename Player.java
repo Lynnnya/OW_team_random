@@ -1,8 +1,8 @@
-class Players {
+class Player {
     String name;
     boolean team;
 
-    public Players(String player_name, boolean team_number) {
+    public Player(String player_name, boolean team_number) {
         name = player_name;
         team = team_number;
     }

@@ -5,14 +5,14 @@ public class Main {
     static final int MIN_PLAYERS = 2;
     static final int OG_PLAYERS = 12;
 
-    static void result(ArrayList<Players> list_of_players, int team_size) {
+    static void result(ArrayList<Player> list_of_players, int team_size) {
         System.out.println(String.format("%-10s%-10s", "TEAM 1", "TEAM 2"));
         for(int i=0; i<team_size; i++) {
             list_of_players.get(i).print_player();
             list_of_players.get(i+team_size).print_player();
         }
     }
-    static void list_organize(ArrayList<Players> list_of_players, int team_size) {
+    static void list_organize(ArrayList<Player> list_of_players, int team_size) {
         for(int i=0; i<team_size; i++) {
             if(list_of_players.get(i).team) {
                 for(int j=team_size; j<team_size*2; j++) {
@@ -44,7 +44,7 @@ public class Main {
     public static void main(String[] args) {
         int num_of_players = num_of_players_input();
         int T1_num = 0, T2_num = 0;
-        ArrayList<Players> list_of_players = new ArrayList<Players>();
+        ArrayList<Player> list_of_players = new ArrayList<Player>();
         Scanner name_input = new Scanner(System.in);
         String player_name;
 
@@ -54,18 +54,18 @@ public class Main {
             boolean new_member = RNG();
 
             if(T1_num == num_of_players/2){
-                list_of_players.add(new Players(player_name, true));
+                list_of_players.add(new Player(player_name, true));
                 continue;
             }
             else if(T2_num == num_of_players/2){
-                list_of_players.add(new Players(player_name, false));
+                list_of_players.add(new Player(player_name, false));
                 continue;
             }
             if(new_member)
                 T2_num++;
             else
                 T1_num++;
-            list_of_players.add(new Players(player_name, new_member));
+            list_of_players.add(new Player(player_name, new_member));
         }
 
         list_organize(list_of_players, num_of_players/2);
