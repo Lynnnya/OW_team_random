@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.*;
 
 public class Main {
@@ -9,29 +10,32 @@ public class Main {
         Random rand = new Random();
         return rand.nextBoolean();
     }
-    static int num_of_players_input() {
-        System.out.print("Enter the number of players that will be playing: ");
-        Scanner input_num_of_player = new Scanner(System.in);
-        int num_of_players = input_num_of_player.nextInt();
+    static int num_of_players_input(Scanner input, PrintStream prompt) {
+        if (prompt != null)
+            prompt.print("Enter the number of players that will be playing: ");
+        int num_of_players = input.nextInt();
+        input.nextLine();
 
         if (num_of_players == OG_PLAYERS){
-            System.out.println("This is for OW2 bro go back to OW1 :p");
-            num_of_players = num_of_players_input();
+            if (prompt != null)
+                prompt.println("This is for OW2 bro go back to OW1 :p");
+            num_of_players = num_of_players_input(input, prompt);
         }
         else if (num_of_players < MIN_PLAYERS||num_of_players > MAX_PLAYERS){
-            System.out.println("Invalid number of players, try again.");
-            num_of_players = num_of_players_input();
+            if (prompt != null)
+                prompt.println("Invalid number of players, try again.");
+            num_of_players = num_of_players_input(input, prompt);
         }
         return num_of_players;
     }
     public static void main(String[] args) {
-        int num_of_players = num_of_players_input();
+        Scanner input = new Scanner(System.in);
+        int num_of_players = num_of_players_input(input, System.out);
 
         PlayerList list_of_players = new PlayerList();
-        Scanner name_input = new Scanner(System.in);
 
         for (int i=0; i<num_of_players; i++){
-            Player player = Player.scan(name_input, System.out, i+1);
+            Player player = Player.scan(input, System.out, i+1);
             list_of_players.addPlayer(player);
         }
 
