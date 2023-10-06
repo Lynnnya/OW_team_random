@@ -22,17 +22,17 @@ public class PlayerList {
         for (Player player : players) {
             boolean new_member = rand.nextBoolean();
             if (T1_num == players.size() / 2) {
-                player.team = true;
+                player.setTeam(true);
                 continue;
             } else if (T2_num == players.size() / 2) {
-                player.team = false;
+                player.setTeam(false);
                 continue;
             }
             if (new_member)
                 T2_num++;
             else
                 T1_num++;
-            player.team = new_member;
+            player.setTeam(new_member);
         }
     }
 
@@ -41,9 +41,9 @@ public class PlayerList {
     // you should consider wrapping the data into a class and moving the function code into that class
     public void organizeByTeam() {
         for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).team) {
+            if (players.get(i).getTeam()) {
                 for (int j = players.size() / 2; j < players.size(); j++) {
-                    if (!players.get(j).team)
+                    if (!players.get(j).getTeam())
                         swap(players, i, j);
                 }
             }

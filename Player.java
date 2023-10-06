@@ -2,12 +2,28 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Player {
-    String name;
-    boolean team;
+    // private fields + getters and setters instead of public fields are good OOP practice
+    // this is a good practice because it allows you to change the implementation
+    // of the class without changing the interface
+    private String name;
+    private boolean team;
 
     public Player(String player_name, boolean team_number) {
         name = player_name;
         team = team_number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean getTeam() {
+        return team;
+    }
+
+    boolean setTeam(boolean team_number) {
+        team = team_number;
+        return team;
     }
 
     // reading player information is related to the Player class
