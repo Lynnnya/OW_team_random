@@ -2,7 +2,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import static java.util.Collections.swap;
 
@@ -54,8 +53,8 @@ public class PlayerList {
     public void printTeams(PrintStream out) {
         out.println(String.format("%-10s%-10s", "TEAM 1", "TEAM 2"));
         for (int i = 0; i < players.size() / 2; i++) {
-            players.get(i).print_player(out);
-            players.get(i + players.size() / 2).print_player(out);
+            out.print(players.get(i));
+            out.print(players.get(i + players.size() / 2));
             out.println();
         }
     }

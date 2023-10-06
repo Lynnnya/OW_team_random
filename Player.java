@@ -1,7 +1,7 @@
 import java.io.PrintStream;
 import java.util.Scanner;
 
-class Player {
+public class Player {
     String name;
     boolean team;
 
@@ -19,10 +19,9 @@ class Player {
         return new Player(name, false);
     }
 
-    // hoist data input and outputs into parameters
-    // so you can easily change this function to print to a file, etc.
-    public void print_player(PrintStream out) {
-        // it is best to avoid "magic" behaviors (writing a newline or not) in generic functions like this
-        out.print(String.format("%-10s", name));
+    // use generic methods like toString() to implement data printing
+    @Override
+    public String toString() {
+        return String.format("%-10s", name);
     }
 }
